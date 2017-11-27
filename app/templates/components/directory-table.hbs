@@ -1,0 +1,30 @@
+<div class="right-align">
+    <a class="btn-floating btn-medium waves-effect waves-light red" {{action "toggleModal"}}>
+        <i class="material-icons">add</i>
+    </a>
+</div>
+<table class="bordered highlight">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Path</th>
+            <th>Watch</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each directories as |dir|}}
+        <tr {{action "dirSelected"}}>
+            <td>{{dir.name}}</td>
+            <td>{{dir.path}}</td>
+            <td>
+                {{#if dir.watch}}
+                    <i class="material-icons">check</i>
+                {{else}}
+                    <i class="material-icons">close</i>
+                {{/if}}
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+{{add-directory-modal isOpen=modalIsOpen onClose='modalClosed'}}
